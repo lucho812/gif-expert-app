@@ -7,7 +7,7 @@
     "main.b51e9f23.js.map": "/static/js/main.b51e9f23.js.map"
   },
   "entrypoints": [
-    "./static/css/main.1a977d8d.css",
-    "./static/js/main.b51e9f23.js"
+    "gif-expert-app/static/css/main.1a977d8d.css",
+    "gif-expert-app/static/js/main.b51e9f23.js"
   ]
 }
