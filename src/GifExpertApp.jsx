@@ -1,35 +1,37 @@
-import { useState } from "react";
-import {AddCategory} from './components/AddCategory'
-import {GifGrid} from './components/GifGrid'
+import { useState } from 'react';
+import { AddCategory, GifGrid } from './components';
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState(['Dragon Ball']);
+    
+    const [ categories, setCategories ] = useState([ 'One Punch' ]);
+    
+    const onAddCategory = ( newCategory ) => {
+        if ( categories.includes(newCategory) ) return;
+        setCategories([ newCategory, ...categories ]);
+    }
+    
 
-  const onAddCategory = (newCategory) => {
-    if (categories.includes(newCategory)) return;
+    return (
+        <>
 
-    // setCategories(categories.concat('Naruto'));
-    setCategories([newCategory, ...categories]);
-  };
+            <h1>GifExpertApp</h1>
 
-  return (
-    <>
-      {/* Titulo */}
-      <h1>GifExpertApp</h1>
+    
+            <AddCategory 
+                onNewCategory={ (value) => onAddCategory(value) }
+            />
 
-      {/* Input */}
-      <AddCategory
-        // setCategories={ setCategories }
-        //on: se usa cuando se emite algo, es muy común en los eventos
-        onNewCategory={onAddCategory}
-      />
+            { 
+                categories.map( ( category ) => (
+                    <GifGrid 
+                        key={ category } 
+                        category={ category } />
+                ))
+            }
 
-      {/* Listado de Gif */}
-      {categories.map((category) => (
-        <GifGrid key={category} category={category} />
-      ))}
-      {/* <li>ABC</li> */}
-      {/* Gif Item */}
-    </>
-  );
-};
+
+
+
+        </>
+    )
+}

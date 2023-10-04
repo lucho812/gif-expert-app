@@ -1,23 +1,22 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { getGifs } from "../helpers/getGifs";
-
-// Un hook es una función que retorna algo
+import { useEffect, useState } from 'react';
+import { getGifs } from '../helpers/getGifs';
 
 export const useFetchGifs = ( category ) => {
-    
-    const [images, setimages] = useState([]);
-    const [isLoading, setisLoading] = useState(true)
-    
-    const getImages = async () => {
-        const newImages = await getGifs(category)
-        setimages(newImages);
-        setisLoading(false);
-    }
+ 
+    const [images, setImages] = useState([]);
+    const [isLoading, setIsLoading] = useState( true );
 
+    const getImages = async() => {
+        const newImages = await getGifs( category );
+        setImages(newImages);
+        setIsLoading(false);
+    }
+    
     useEffect( () => {
-        getImages()
-    }, [] )
+        getImages();
+    }, []);
+
+
 
     return {
         images,
@@ -25,4 +24,3 @@ export const useFetchGifs = ( category ) => {
     }
 
 }
-
